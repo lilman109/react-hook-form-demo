@@ -20,7 +20,7 @@ const YouTubeForm = () => {
     <div>
       <h1>YouTube Form</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label htmlFor="username">Username</label>
         <input type="text" id="username" {...register("username")} />
 
