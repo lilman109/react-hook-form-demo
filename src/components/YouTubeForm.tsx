@@ -10,6 +10,7 @@ type FormValues = {
     twitter: string;
     facebook: string;
   };
+  phoneNumbers: string[];
 };
 
 const YouTubeForm = () => {
@@ -22,6 +23,7 @@ const YouTubeForm = () => {
         twitter: "",
         facebook: "",
       },
+      phoneNumbers: ["", ""],
     },
   });
   const { register, control, handleSubmit, formState } = form;
@@ -98,12 +100,50 @@ const YouTubeForm = () => {
 
         <div className="font-control">
           <label htmlFor="twitter">Twitter</label>
-          <input type="text" id="twitter" {...register("social.twitter")} />
+          <input type="text" id="twitter" {...register("social.twitter", {
+            required: {
+              value: true,
+              message: "Twitter is required"
+            }
+          })} />
         </div>
 
         <div className="font-control">
           <label htmlFor="facebook">Facebook</label>
-          <input type="text" id="facebook" {...register("social.facebook")} />
+          <input type="text" id="facebook" {...register("social.facebook", {
+            required: {
+              value: true,
+              message: ""
+            }
+          })} />
+        </div>
+
+        <div className="font-control">
+          <label htmlFor="primary-phone">Primary phone number</label>
+          <input
+            type="text"
+            id="primary-phone"
+            {...register("phoneNumbers.0", {
+              required: {
+                value: true,
+                message: "Primary phone number is required"
+              }
+            })}
+          />
+        </div>
+
+        <div className="font-control">
+          <label htmlFor="secondary-phone">Second phone number</label>
+          <input
+            type="text"
+            id="secondary-phone"
+            {...register("phoneNumbers.1", {
+              required: {
+                value: true,
+                message: "Secondary phone number is required"
+              }
+            })}
+          />
         </div>
 
         <button>Submit</button>
